@@ -49,7 +49,6 @@ uint8_t rxbuf[256];
 uint16_t urxlen;
 
 #define NOTASK 0
-static bool i = 0;
 volatile bool rx_complate = false;
 const char find1 = ':';
 const char find2 = '!';
@@ -69,11 +68,6 @@ void blink_task(void *pvParameter)
 	static bool a = false, b = false, c = false, d = false;
 
     while(1) {
-        /* Blink off (output low) */
-//        gpio_set_level(BLINK_GPIO, 0);
-//        vTaskDelay(1000 / portTICK_PERIOD_MS);
-//        /* Blink on (output high) */
-//        gpio_set_level(BLINK_GPIO, 1);
         vTaskDelay(10 / portTICK_PERIOD_MS);
     	if(rx_complate)
     	{
@@ -99,24 +93,9 @@ void blink_task(void *pvParameter)
 					gpio_set_level(BLINK_GPIO4,d );
 					rxbuf[0] = '5';
 					break;
-
     		}
 
     	}
-//    	if(i)
-//    	{
-//    		 gpio_set_level(BLINK_GPIO1, 0);
-//    		 gpio_set_level(BLINK_GPIO2, 0);
-//    		 gpio_set_level(BLINK_GPIO3, 0);
-//    		 gpio_set_level(BLINK_GPIO4, 0);
-//    	}
-//    	else
-//    	{
-//    		gpio_set_level(BLINK_GPIO1, 1);
-//    		gpio_set_level(BLINK_GPIO2, 1);
-//    		gpio_set_level(BLINK_GPIO3, 1);
-//    		gpio_set_level(BLINK_GPIO4, 1);
-//    	}
     }
 }
 /*
@@ -142,8 +121,6 @@ static void IRAM_ATTR uart_intr_handle(void *arg)
 // a test code or debug code to indicate UART receives successfully,
 // you can redirect received byte as echo also
  uart_write_bytes(EX_UART_NUM, (const char*) rxbuf, 1);
-
- i = !i;
 }
 /*
  * main
