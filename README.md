@@ -1,6 +1,8 @@
 # ros-esp32-uart-communication
 communication of ros with esp32 via uart and turtle_teleop_key application
 
+Keyboard key data received with turtlesim_turtle_teleop_key is transmitted to esp32 on uart and led blink application.
+
 ## --- ROS ---
  * Let's run a node to start uart communication with esp on ubuntu and subscribe to / turtle1 / cmd_vel.
    - rosrun esp-idf-test serialT.py
