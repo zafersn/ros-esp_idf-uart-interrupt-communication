@@ -10,7 +10,8 @@ communication of ros with esp32 via uart and turtle_teleop_key application
 ## ---- ESP - IDF -------
 
 
- * This example shows how to use the UART driver to handle UART interrupt.
+ * This example shows how to use the UART driver to handle UART interrupt. 
+ * For esp32 devkitc boards you can connect directly to the computer via usb using micro usb inputs. It does not require extra pin connection.
  
   - Port: UART0
   - Receive (Rx) buffer: on
